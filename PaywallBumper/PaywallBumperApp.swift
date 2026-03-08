@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct PaywallBumperApp: App {
+    // Swap 'paywallVariant' to change bumper type
+    private let variantConfig = VariantConfiguration(paywallVariant: .featureLed)
+    private let analyticsTracker = AnalyticsTracker()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                FeatureListView(viewModel: FeatureViewModel(variantConfiguration: variantConfig,
+                                                            analyticsTracker: analyticsTracker))
+            }
         }
     }
 }
