@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+final class AnalyticsTracker: AnalyticsTracking {
+    func track(_ event: AnalyticsEvent) {
+        print("✅ Event tracked: \(event)")
+    }
+}
