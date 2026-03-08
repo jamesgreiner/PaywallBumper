@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum AnalyticsEvent {
+    case bumperShown(variant: String, featureName: String)
+    case upgradeTapped(variant: String)
+    case bumperDismissed(variant: String)
+    
+}

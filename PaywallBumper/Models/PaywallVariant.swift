@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+enum PaywallVariant: String {
+    case featureLed = "A"
+    case valueLed = "B"
+}
+
+struct VariantConfiguration {
+    let paywallVariant: PaywallVariant
+}
