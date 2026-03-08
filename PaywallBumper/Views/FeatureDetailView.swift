@@ -2,17 +2,31 @@
 //  FeatureDetailView.swift
 //  PaywallBumper
 //
-//  Created by James Greiner on 3/5/26.
+//  Created by James Greiner on 3/6/26.
 //
 
 import SwiftUI
 
 struct FeatureDetailView: View {
+
+    let featureName: String
+    let imageName: String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(featureName)
+                .font(.largeTitle)
+                .padding()
+            Image(systemName: imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding()
+        }
     }
 }
 
 #Preview {
-    FeatureDetailView()
+    let feature = Feature.mockFeatures[0]
+    FeatureDetailView(featureName: feature.name, imageName: feature.image)
 }

@@ -2,17 +2,49 @@
 //  FeatureListView.swift
 //  PaywallBumper
 //
-//  Created by James Greiner on 3/5/26.
+//  Created by James Greiner on 3/6/26.
 //
 
 import SwiftUI
 
 struct FeatureListView: View {
+    @StateObject private var viewModel: FeatureViewModel
+
+    init(viewModel: FeatureViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(viewModel.availableFeatures) { feature in
+            Button {
+                viewModel.featureWasTapped(feature)
+            } label: {
+                FeatureView(feature: feature)
+                    .padding()
+            }
+            .listRowSeparator(.hidden)
+            .buttonStyle(.plain)
+        }
+        .navigationBarTitle("Available Features")
+        .scrollContentBackground(.hidden)
+        .navigationDestination(item: $viewModel.selectedFeature) { feature in
+            FeatureDetailView(featureName: feature.name,
+                              imageName: feature.image)
+        }
+        .sheet(item: $viewModel.paywallFeature) { feature in
+            PaywallBumperView(featureName: viewModel.bumperTitle(for: feature),
+                              valueDescription: viewModel.bumperMessage(for: feature),
+                              upgradeTapped: { viewModel.trackUpgradeTapped(feature) },
+                              dismissTapped: { viewModel.trackBumperDismissed(feature) }
+            )
+            .presentationDetents([.medium])
+        }
     }
 }
 
 #Preview {
-    FeatureListView()
+    let config = VariantConfiguration(paywallVariant: .featureLed)
+    let tracker = AnalyticsTracker()
+    FeatureListView(viewModel: FeatureViewModel(variantConfiguration: config,
+                                                analyticsTracker: tracker))
 }

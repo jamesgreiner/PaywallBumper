@@ -1,18 +1,30 @@
 //
-//  FeatureListRowView.swift
+//  FeatureView.swift
 //  PaywallBumper
 //
-//  Created by James Greiner on 3/5/26.
+//  Created by James Greiner on 3/6/26.
 //
 
 import SwiftUI
 
-struct FeatureListRowView: View {
+struct FeatureView: View {
+    let feature: Feature
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(feature.name)
+                .foregroundStyle(.white)
+                .font(.title)
+                .bold()
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(.blue)
+        .clipShape(.capsule)
+        .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 10)
     }
 }
 
 #Preview {
-    FeatureListRowView()
+    FeatureView(feature: Feature.mockFeatures[0])
 }
