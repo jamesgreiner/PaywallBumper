@@ -12,7 +12,7 @@
     - Premium features open the paywall bumper sheet
         - Use the **X** button or swipe down to dismiss the sheet
         
-**NOTE: I was having issues getting the unit tests to run in Xcode 26.3, but when using version 16.4 they ran and passesd successfully
+*NOTE: I was having issues getting the unit tests to run in Xcode 26.3, but when using version 16.4 they ran and passed successfully
 
 ## Architecture decisions
 
@@ -34,7 +34,7 @@ private let variantConfig = VariantConfiguration(paywallVariant: .valueLed)
 
 - Track additional events
     - Number or times each premium feature was tapped
-    - Time spend on paywall bumper before upgrade or dismissal
-- Use `AnalyticsTracking` to create an implemntation that tracks/persists events across app launches
-- Add UI tests for core workflow paths (upgrade and dismissal)
+    - Time spent viewing paywall bumper before upgrade or dismissal
+- Use `AnalyticsTracking` to create an implementation that tracks/persists events across app launches
+- Add UI tests for core workflow paths (upgrade, dismissal, basic feature tap)
 - Track user type to ensure premium users can access all features
