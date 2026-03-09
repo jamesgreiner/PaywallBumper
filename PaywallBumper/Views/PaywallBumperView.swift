@@ -19,59 +19,69 @@ struct PaywallBumperView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                Spacer()
-
-                Button {
-                    wasDismissedByTap = true
-                    dismissTapped()
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .padding()
-                        .font(.title2)
-                        .tint(.black)
-                        .bold()
-                        .background(.blue)
-                        .clipShape(.buttonBorder)
-                }
-                .padding(.top)
-                .padding(.trailing)
-            }
-
-            HStack {
-                Text(featureName)
-                    .font(.largeTitle)
-                    .bold()
-                Spacer()
-            }
-            .padding()
-
-            HStack {
-                Text(valueDescription)
-                    .font(.title3)
-                    .bold()
-                Spacer()
-            }
-            .padding()
-
-
+            dismissButton
+            paywallContent
             Spacer()
-            Button("Upgrade Your Adventure") {
-                upgradeTapped()
-            }
-            .padding()
-            .font(.title2)
-            .tint(.white)
-            .bold()
-            .background(.blue)
-            .clipShape(.buttonBorder)
+            upgradeButton
         }
         .onDisappear {
             if !wasDismissedByTap {
                 dismissTapped()
             }
         }
+    }
+
+    private var dismissButton: some View {
+        HStack {
+            Spacer()
+
+            Button {
+                wasDismissedByTap = true
+                dismissTapped()
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .padding()
+                    .font(.title2)
+                    .tint(.black)
+                    .bold()
+                    .background(.blue)
+                    .clipShape(.buttonBorder)
+            }
+            .padding(.top)
+            .padding(.trailing)
+        }
+    }
+
+    @ViewBuilder
+    private var paywallContent: some View {
+        HStack {
+            Text(featureName)
+                .font(.largeTitle)
+                .bold()
+            Spacer()
+        }
+        .padding()
+
+        HStack {
+            Text(valueDescription)
+                .font(.title3)
+                .bold()
+            Spacer()
+        }
+        .padding()
+    }
+
+    private var upgradeButton: some View {
+        Button("Upgrade Your Adventure") {
+            upgradeTapped()
+        }
+        .padding()
+        .font(.title2)
+        .tint(.white)
+        .bold()
+        .background(.blue)
+        .clipShape(.buttonBorder)
     }
 }
 

@@ -15,6 +15,24 @@ struct FeatureListView: View {
     }
 
     var body: some View {
+        featureList
+            .navigationBarTitle("Available Features")
+            .scrollContentBackground(.hidden)
+            .navigationDestination(item: $viewModel.selectedFeature) { feature in
+                FeatureDetailView(featureName: feature.name,
+                                  imageName: feature.image)
+            }
+            .sheet(item: $viewModel.paywallFeature) { feature in
+                PaywallBumperView(featureName: viewModel.bumperTitle(for: feature),
+                                  valueDescription: viewModel.bumperMessage(for: feature),
+                                  upgradeTapped: { viewModel.trackUpgradeTapped(feature) },
+                                  dismissTapped: { viewModel.trackBumperDismissed(feature) }
+                )
+                .presentationDetents([.medium])
+            }
+    }
+
+    private var featureList: some View {
         List(viewModel.availableFeatures) { feature in
             Button {
                 viewModel.featureWasTapped(feature)
@@ -24,20 +42,6 @@ struct FeatureListView: View {
             }
             .listRowSeparator(.hidden)
             .buttonStyle(.plain)
-        }
-        .navigationBarTitle("Available Features")
-        .scrollContentBackground(.hidden)
-        .navigationDestination(item: $viewModel.selectedFeature) { feature in
-            FeatureDetailView(featureName: feature.name,
-                              imageName: feature.image)
-        }
-        .sheet(item: $viewModel.paywallFeature) { feature in
-            PaywallBumperView(featureName: viewModel.bumperTitle(for: feature),
-                              valueDescription: viewModel.bumperMessage(for: feature),
-                              upgradeTapped: { viewModel.trackUpgradeTapped(feature) },
-                              dismissTapped: { viewModel.trackBumperDismissed(feature) }
-            )
-            .presentationDetents([.medium])
         }
     }
 }
