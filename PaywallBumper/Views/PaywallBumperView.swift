@@ -75,6 +75,8 @@ struct PaywallBumperView: View {
     private var upgradeButton: some View {
         Button("Upgrade Your Adventure") {
             upgradeTapped()
+            wasDismissedByTap = true
+            dismiss()
         }
         .padding()
         .font(.title2)
