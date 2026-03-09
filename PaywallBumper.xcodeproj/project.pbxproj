@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		432B399D2F5E228700A5E4EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 432B399C2F5E228700A5E4EC /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		430369D32F5A9FBD00594112 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		430369C52F5A9FBA00594112 /* PaywallBumper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaywallBumper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430369D22F5A9FBD00594112 /* PaywallBumperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaywallBumperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		432B399C2F5E228700A5E4EC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +60,7 @@
 		430369BC2F5A9FBA00594112 = {
 			isa = PBXGroup;
 			children = (
+				432B399C2F5E228700A5E4EC /* README.md */,
 				430369C72F5A9FBA00594112 /* PaywallBumper */,
 				430369D52F5A9FBD00594112 /* PaywallBumperTests */,
 				430369C62F5A9FBA00594112 /* Products */,
@@ -162,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432B399D2F5E228700A5E4EC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
